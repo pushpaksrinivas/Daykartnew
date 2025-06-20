@@ -93,6 +93,10 @@ nav {
   font-weight: bold;
 }
 
+.brand:hover{
+  color: white;
+}
+
 .nav-links {
   display: flex;
   gap: 15px;
@@ -107,7 +111,7 @@ nav {
 
 nav a {
   margin: 0 15px;
-  color: var(--dark-color);
+  color: white;
   font-weight: 500;
   text-decoration: none;
   padding: 10px 15px;

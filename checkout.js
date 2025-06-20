@@ -8,7 +8,9 @@ let shipping = 0;
 const orderSummary = document.getElementById("orderSummary");
 const subtotalEl = document.getElementById("subtotal");
 const totalEl = document.getElementById("total");
+const mrptotalEl = document.getElementById("mrpTotal");
 const subtotalRow = document.getElementById("subtotalRow");
+const mrptotalRow = document.getElementById("mrptotalRow");
 const couponMsg = document.getElementById("couponMessage");
 const applyCouponBtn = document.getElementById("applyCoupon");
 const couponInput = document.getElementById("couponCode");
@@ -35,7 +37,7 @@ function renderCartItems() {
       <span>${item.title} × ${qty}</span>
       <span>₹${itemTotal.toFixed(2)}</span>
     `;
-    orderSummary.insertBefore(row, subtotalRow);
+    orderSummary.insertBefore(row, mrptotalRow);
   });
 
   updateTotals();
@@ -63,6 +65,7 @@ function updateTotals() {
   }
 
   subtotalEl.textContent = `₹${offerTotal.toFixed(2)}`;
+  mrptotalEl.textContent = `₹${mrpTotal.toFixed(2)}`;
   totalEl.textContent = `₹${Math.max(offerTotal - discount + shipping, 0).toFixed(2)}`;
 
   let savedRow = document.getElementById("youSavedRow");
@@ -70,8 +73,8 @@ function updateTotals() {
     savedRow = document.createElement("div");
     savedRow.className = "order-row";
     savedRow.id = "youSavedRow";
-    savedRow.innerHTML = `<span>You Saved</span><span id="youSaved">₹${youSaved.toFixed(2)}</span>`;
-    orderSummary.insertBefore(savedRow, subtotalRow.nextSibling);
+    savedRow.innerHTML = `<span>You Saved</span><span id="youSaved" style="color: green;">₹${youSaved.toFixed(2)}</span>`;
+    orderSummary.insertBefore(savedRow, mrptotalRow.nextSibling);
   } else {
     document.getElementById("youSaved").textContent = `₹${youSaved.toFixed(2)}`;
   }

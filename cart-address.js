@@ -42,7 +42,7 @@ async function isFirstOrder(uid) {
 
 // 🎁 Reward referrer for eligible order
 async function rewardReferrerIfEligible(userData, orderTotal) {
-  if (orderTotal <= 2499 || !userData.referredBy) return;
+  if (orderTotal <= 2199 || !userData.referredBy) return;
 
   const refQuery = query(collection(db, "users"), where("referralCode", "==", userData.referredBy));
   const refSnapshot = await getDocs(refQuery);
@@ -88,8 +88,7 @@ async function prefillForm(uid) {
 }
 
 // 🛒 Save the order and process logic
-async function saveOrderToFirebase(uid) {
-  // Show loading popup
+async function saveOrderToFirebase(uid, txnId = "") {
   const loadingEl = document.getElementById("loadingOverlay");
   if (loadingEl) loadingEl.style.display = "flex";
 
@@ -111,7 +110,50 @@ async function saveOrderToFirebase(uid) {
   const userData = userDoc.exists() ? userDoc.data() : {};
   const { email = "", collegeName = "", name = "", phone = "" } = userData;
 
+  if (!email || !collegeName) {
+    if (loadingEl) loadingEl.style.display = "none";
+    alert("Please fill in your college name and email before placing an order.");
+    window.location.href = "/account/account.html";
+    return;
+  }
+
   const paymentMethod = document.querySelector("input[name='payment']:checked")?.value || "UPI";
+
+  // ⏸ COD flow: Show modal and wait for transaction ID
+  if (paymentMethod === "COD" && !txnId) {
+  const loadingEl = document.getElementById("loadingOverlay");
+  if (loadingEl) loadingEl.style.display = "none";
+
+  const codModal = document.getElementById("codModal");
+
+  if (isMobileDevice()) {
+    const amount = total + 100; // Or finalTotal if already computed
+    const upiLink = `upi://pay?pa=9652377187-2@ybl&pn=DayKart&am=${amount}&cu=INR`; // 🛠️ Replace with real info
+
+    alert("You will be redirected to UPI payment. Please return and enter your transaction ID.");
+    window.open(upiLink, "_blank"); // Open UPI link in new tab (or same tab if preferred)
+  }
+
+  // ✅ Show modal on all devices to enter Transaction ID
+  if (codModal) {
+    codModal.style.display = "flex";
+
+    document.getElementById("confirmTransactionBtn").onclick = async () => {
+      const txnInput = document.getElementById("transactionIdInput").value.trim();
+      if (!txnInput) {
+        alert("Please enter the transaction ID.");
+        return;
+      }
+
+      codModal.style.display = "none";
+      await saveOrderToFirebase(uid, txnInput); // 🔁 Re-call with txnId
+    };
+  }
+
+  return;
+}
+
+
 
   let shipping = 0;
   const isFirst = await isFirstOrder(uid);
@@ -145,6 +187,7 @@ async function saveOrderToFirebase(uid) {
     shipping,
     paymentMethod,
     firstOrder: isFirst,
+    transactionId: txnId || null, // ✅ Add transaction ID here
     timestamp: serverTimestamp()
   };
 
@@ -171,7 +214,6 @@ async function saveOrderToFirebase(uid) {
       transaction.set(orderRef, orderData);
     });
 
-    // Clear user's cart in Firestore
     const cartRef = collection(db, `users/${uid}/cart`);
     const cartSnap = await getDocs(cartRef);
     const deletePromises = cartSnap.docs.map((docSnap) => deleteDoc(docSnap.ref));
@@ -192,6 +234,9 @@ async function saveOrderToFirebase(uid) {
   }
 }
 
+function isMobileDevice() {
+  return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
 
 // ✅ On page load
 window.addEventListener("DOMContentLoaded", () => {
@@ -205,7 +250,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     } else {
       alert("Please log in to place an order.");
-      window.location.href = "/login.html";
+      window.location.href = "/account/login.html";
     }
   });
 });
