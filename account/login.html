@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login/Signup Form</title>
+  <link rel="stylesheet" href="login.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <div class="container">
+    <!-- Login Form -->
+    <div class="form-box login">
+      <form action="javascript:void(0);">
+        <h1>Login</h1>
+        <div class="input-box">
+          <input type="email" placeholder="Email" id="email" required />
+          <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Password" id="password" required />
+          <i class='bx bxs-lock-alt  toggle-password' toggle="#password"></i>
+        </div>
+        <div class="forgot-link">
+          <a href="forget.html">Forgot Password?</a>
+        </div>
+        <div class="remember-me">
+    <label><input type="checkbox" id="rememberMe" /> Remember Me</label>
+  </div>
+        <button type="submit" class="btn" id="loginBtn">Login</button>
+        <p>or login with social platforms</p>
+        <div class="social-icons">
+          <a href="#" id="googleSignup"><i class='bx bxl-google'></i></a>
+        </div>
+        <div id="errorPopup" style="color:red; display:none;"></div>
+      </form>
+    </div>
+
+    <!-- Registration Form -->
+    <div class="form-box register">
+      <form action="javascript:void(0);">
+        <h1>Registration</h1>
+        <div class="input-box">
+          <input type="text" placeholder="Username" id="username" required />
+          <i class='bx bxs-user'></i>
+        </div>
+        <!-- <div class="input-box">
+          <input type="text" placeholder="Reg No" id="regno" required />
+          <i class='bx bxs-id-card'></i>
+        </div> -->
+        <div class="input-box">
+          <input type="email" placeholder="Email" id="signupEmail" required />
+          <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Password" id="signupPassword" required />
+          <i class='bx bxs-lock-alt toggle-password' toggle="#password"></i>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Confirm Password" id="confirmpass" required />
+          <i class='bx bxs-lock toggle-password' toggle="#password"></i>
+        </div>
+        <div class="input-box">
+          <input type="text" placeholder="Referral Code (optional)" id="refcode" />
+          <i class='bx bx-gift'></i>
+        </div>
+        <button type="submit" class="btn" id="signupBtn">Register</button>
+        <p>or register with social platforms</p>
+        <div class="social-icons">
+          <a href="#" id="googleSignup"><i class='bx bxl-google'></i></a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Toggle Panel -->
+    <div class="toggle-box">
+      <div class="toggle-panel toggle-left">
+        <h1>Hello, Welcome!</h1>
+        <p>Don't have an account?</p>
+        <button class="btn register-btn">Register</button>
+      </div>
+      <div class="toggle-panel toggle-right">
+        <h1>Welcome Back!</h1>
+        <p>Already have an account?</p>
+        <button class="btn login-btn">Login</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

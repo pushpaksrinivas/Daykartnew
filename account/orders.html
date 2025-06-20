@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Orders</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <nav>
+  <div class="nav-toggle">
+  <i class='bx bxs-grid' id="navToggle"></i>
+  <a href="../index.html" class="brand">DayKart</a>
+</div>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html"><i class='bx bxs-home'></i> Home</a>
+    <a href="dashboard.html" ><i class='bx bxs-id-card'></i> Dashboard</a>
+    <a href="account.html"><i class='bx bxs-user'></i> Acc Details</a>
+    <a href="address.html"><i class='bx  bx-book'></i> Address</a>
+    <a href="orders.html" class="active"><i class='bx bxs-cart'></i> Orders</a>
+    <a href="logout.html"><i class='bx bxs-log-out'></i> Logout</a>
+  </div>
+</nav>
+
+  <main class="ord-main">
+    <h1>Your Orders</h1>
+    <div id="ordersContainer" class="order-list">Loading...</div>
+  </main>
+
+  <script type="module" src="js/orders.js"></script>
+</body>
+</html>

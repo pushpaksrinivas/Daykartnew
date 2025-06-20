@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="checkout.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Checkout</h1>
+
+    <div class="coupon-section">
+      <button id="toggleCoupon">Have a coupon? Click here to enter your code</button>
+      <div id="couponForm" class="hidden">
+        <input type="text" id="couponCode" placeholder="Enter coupon code" />
+        <button id="applyCoupon">Apply Coupon</button>
+        <p id="couponMessage"></p>
+      </div>
+    </div>
+
+    <!-- Two-column layout -->
+    <div class="checkout-wrapper">
+      <!-- LEFT: Billing Form -->
+      <div class="checkout-left">
+        <form id="checkoutForm">
+          <h2>Billing Details</h2>
+          <div class="form-row">
+            <input type="text" placeholder="First name *" required />
+            <input type="text" placeholder="Last name" />
+          </div>
+          <input type="text" id="collegeName" placeholder="College Name" readonly disabled />
+          <input type="tel" placeholder="Phone *" required />
+          <input type="email" placeholder="Email address *" id="email" required disabled />
+
+          <label><input type="checkbox" /> Email me with news and offers</label>
+          <label><input type="checkbox" /> Ship to a different address?</label>
+          <textarea placeholder="Order notes (optional)"></textarea>
+        </form>
+      </div>
+
+      <!-- RIGHT: Order Summary + Payment -->
+      <div class="checkout-right">
+        <div class="order-summary" id="orderSummary">
+          <h2>Order Summary</h2>
+          <div class="order-row">
+            <span>Product</span>
+            <span>Subtotal</span>
+          </div>
+
+          <div class="order-row" id="subtotalRow">
+            <span>Subtotal</span>
+            <span id="subtotal">₹0.00</span>
+          </div>
+          <div class="order-row" id="shippingRow">
+            <span>Shipping</span>
+            <span id="shippingFee">Calculating...</span>
+          </div>
+          <div class="order-row total">
+            <span>Total</span>
+            <span id="total">₹0.00</span>
+          </div>
+        </div>
+
+        <div class="payment-section">
+          <h3>Payment Method</h3>
+          <label><input type="radio" name="payment" checked /> Pay with UPI QR Code</label>
+          <p class="info">Use UPI apps like BHIM, Paytm, Google Pay, PhonePe or any banking UPI app to make payment.</p>
+          <label><input type="radio" name="payment" /> Credit Card/Debit Card/NetBanking</label>
+          <label><input type="radio" name="payment" value="COD" /> Cash on Delivery (₹100 Pre Pay non-refundable)</label>
+        </div>
+
+        <button id="placeOrderBtn" class="proceed-btn">Proceed to Pay</button>
+      </div>
+    </div>
+  </div>
+  <!-- Loading Overlay -->
+<div id="loadingOverlay" class="loading-overlay" style="display: none;">
+  <div class="loading-box">
+    <div class="spinner"></div>
+    <p>Processing your order, please wait...</p>
+  </div>
+</div>
+
+  <script src="checkout.js" type="module"></script>
+  <script src="cart-address.js" type="module"></script>
+</body>
+</html>

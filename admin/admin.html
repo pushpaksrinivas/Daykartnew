@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Add Product</title>
+  <link rel="stylesheet" href="admin.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <header class="l-header" id="header">
+            <nav class="nav bd-grid">
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="bx bxs-grid"></i>
+                </div>
+
+                <a href="index.html" class="nav-logo">DayKart</a>
+
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link ">Home</a></li>
+                        <li class="nav-item"><a href="#featured" class="nav-link">Featured</a></li>
+                        <li class="nav-item"><a href="#fancy" class="nav-link">Fancy</a></li>
+                        <li class="nav-item"><a href="#new" class="nav-link">New</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link active">Products</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-shop">
+  <a href="cart.html" id="cartIcon" style="position: relative;"><i class="bx bx-shopping-bag"></i><span id="cart-count" class="cart-badge">0</span></a>
+  <a href="account/dashboard.html"><i class="bx bx-user"></i></a>
+</div>
+            </nav>
+        </header>
+  <div id="admin-container" style="display: none;">
+    <h2>Add New Product</h2>
+    <form id="productForm">
+      <label>Product Title</label>
+      <input type="text" id="title" required />
+
+      <label>Description</label>
+      <textarea id="description" required></textarea>
+
+      <label>MRP (₹)</label>
+      <input type="number" id="mrp" required />
+
+      <label>Offer Price (₹)</label>
+      <input type="number" id="offerPrice" required />
+
+      <label>Quantity</label>
+      <input type="number" id="quantity" required />
+
+      <label>Category</label>
+      <input type="text" id="category" required />
+
+      <label>Image URLs (comma-separated)</label>
+      <input type="text" id="images" required />
+
+      <button type="submit">Add Product</button>
+    </form>
+    <p id="status"></p>
+  </div>
+
+  <p id="loading-msg">Checking authorization...</p>
+
+  <footer class="footer section">
+                <div class="footer-container bd-grid">
+                    <div class="footer-box">
+                        <h3 class="footer-title">DayKart</h3>
+                        <p class="footer-description">New Collection of Hostel needs 2025</p>
+                    </div>
+
+                    <div class="footer-box">
+                        <h3 class="footer-title">EXPLORE</h3>
+                        <ul>
+                            <li><a href="admin-products.html" class="footer-link">Products</a></li>
+                            <li><a href="#featured" class="footer-link">wallet</a></li>
+                            <li><a href="#fancy" class="footer-link">Fancy</a></li>
+                            <li><a href="#new" class="footer-link">New</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-box">
+                        <h3 class="footer-title">SUPPORT</h3>
+                        <ul>
+                            <li><a href="#home" class="footer-link">Product Help</a></li>
+                            <li><a href="#featured" class="footer-link">Customer Care</a></li>
+                            <li><a href="/policies/privacy.html" class="footer-link" target="_blank">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-box">
+                        <a href="#" class="footer-social"><i class="bx bxl-facebook"></i></a>
+                        <a href="#" class="footer-social"><i class="bx bxl-instagram"></i></a>
+                        <a href="#" class="footer-social"><i class="bx bxl-whatsapp"></i></a>
+                        <a href="#" class="footer-social"><i class="bx bxl-google"></i></a>
+                    </div>
+                </div>
+
+                <p class="footer-copy">&#169; 2025 <a href="https://codepen.io/leonam-silva-de-souza" target="_blank">DayKart</a>. All rights reserved</p>
+            </footer>
+
+  <script type="module" src="admin-check.js"></script>
+  <script type="module" src="admin.js"></script>
+  <script src="../home.js"></script>
+</body>
+</html>

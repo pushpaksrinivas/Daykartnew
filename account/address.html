@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Address</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <nav>
+  <div class="nav-toggle">
+  <i class='bx bxs-grid' id="navToggle"></i>
+  <a href="../index.html" class="brand">DayKart</a>
+</div>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html"><i class='bx bxs-home'></i> Home</a>
+    <a href="dashboard.html" ><i class='bx bxs-id-card'></i> Dashboard</a>
+    <a href="account.html"><i class='bx bxs-user'></i> Acc Details</a>
+    <a href="address.html" class="active"><i class='bx  bx-book'></i> Address</a>
+    <a href="orders.html"><i class='bx bxs-cart'></i> Orders</a>
+    <a href="logout.html"><i class='bx bxs-log-out'></i> Logout</a>
+  </div>
+</nav>
+  <main>
+    <h1>Address Details</h1>
+    <form id="addressForm">
+      <label>Line 1 (D.No, etc): <input type="text" id="line1" /></label>
+      <label>Line 2 (optional): <input type="text" id="line2" /></label>
+      <label>Street / Landmark: <input type="text" id="street" /></label>
+      <label>Village / City: <input type="text" id="city" /></label>
+      <label>District: <input type="text" id="dist" /></label>
+      <label>State: <input type="text" id="state" /></label>
+      <label>Pincode: <input type="text" id="pincode" /></label>
+      <button type="submit">Save</button>
+    </form>
+    <div id="loading" style="display: none;">
+  <img src="loader.gif"  alt="Loading..." style="height: 36px; width: 36px;"/>
+  <p>Updating</p>
+</div>
+    <div id="popup" style="display: none;">
+  <p>Address updated successfully!</p>
+</div>
+  </main>
+
+  <script type="module" src="js/address.js"></script>
+</body>
+</html>

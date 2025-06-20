@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="pro.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="l-header" id="header">
+            <nav class="nav bd-grid">
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="bx bxs-grid"></i>
+                </div>
+
+                <a href="index.html" class="nav-logo">DayKart</a>
+
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link ">Home</a></li>
+                        <li class="nav-item"><a href="#featured" class="nav-link">Featured</a></li>
+                        <li class="nav-item"><a href="#Fancy" class="nav-link">Fancy</a></li>
+                        <li class="nav-item"><a href="#new" class="nav-link">New</a></li>
+                        <li class="nav-item"><a href="#Products" class="nav-link active">Products</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-shop">
+                    <a href="/cart.html" id="cartIcon" style="position: relative;"><i class="bx bx-shopping-bag"></i><span id="cart-count" class="cart-badge">0</span></a>
+                    <a href="account/dashboard.html" ><i class="bx bx-user"></i></a>
+                </div>
+            </nav>
+    </header>
+    <section class="Products section" id="Products">
+
+            <!-- <div class="Products-container bd-grid">
+                <article class="product">
+                    <img src="https://pngimg.com/d/bucket_PNG7757.png" alt="" class="product-img">
+                    <span class="product-name">Plastic Bucket</span>
+                    <span class="product-price">₹129.99</span>
+                    <a href="#" class="button-light">View <i class="bx bx-right-arrow-alt button-icon"></i></a>
+                    <a href="#" class="button-light" style="margin-top: 10px;">Add to Cart <i class="bx bx-cart button-icon"></i></a>
+                </article>
+
+                <article class="product">
+                    <img src="https://w7.pngwing.com/pngs/509/503/png-transparent-coffee-cup-plastic-mug-milliliter-us-legal-cup-mug-household-bathroom-lid.png" alt="" class="product-img">
+                    <span class="product-name">Plastic Mug</span>
+                    <span class="product-price">₹129.99</span>
+                    <a href="#" class="button-light">View <i class="bx bx-right-arrow-alt button-icon"></i></a>
+                    <a href="#" class="button-light" style="margin-top: 10px;">Add to Cart <i class="bx bx-cart button-icon"></i></a>
+                </article>
+
+                <article class="product">
+                    <img src="https://edu.casio.com/content/casio/locales/intl/en/brands/edu/calculators/scientific/_jcr_content/root/responsivegrid/container_copy/container_copy_copy__1319256016/container_1745404489/container/container_copy_copy/container_copy/container_copy/image.casiocoreimg.png/1741703367988/main.png" alt="" class="product-img">
+                    <span class="product-name">Scientific Calculator</span>
+                    <span class="product-price">₹129.99</span>
+                    <a href="#" class="button-light">View <i class="bx bx-right-arrow-alt button-icon"></i></a>
+                    <a href="#" class="button-light" style="margin-top: 10px;">Add to Cart <i class="bx bx-cart button-icon"></i></a>
+                </article>
+
+                <article class="product">
+                    <img src="https://png.pngtree.com/png-clipart/20250107/original/pngtree-colorful-study-notebooks-with-realistic-textures-png-image_20114823.png" alt="" class="product-img">
+                    <span class="product-name">Statinory</span>
+                    <span class="product-price">₹129.99</span>
+                    <a href="#" class="button-light">View <i class="bx bx-right-arrow-alt button-icon"></i></a>
+                    <a href="#" class="button-light" style="margin-top: 10px;">Add to Cart <i class="bx bx-cart button-icon"></i></a>
+                </article>
+
+                <article class="product">
+                    <img src="https://pngimg.com/d/bucket_PNG7757.png" alt="" class="product-img">
+                    <span class="product-name">Plastic Bucket</span>
+                    <span class="product-price">₹129.99</span>
+                    <a href="#" class="button-light">View <i class="bx bx-right-arrow-alt button-icon"></i></a>
+                    <a href="#" class="button-light" style="margin-top: 10px;">Add to Cart <i class="bx bx-cart button-icon"></i></a>
+                </article>
+
+                <article class="product">
+                    <img src="https://w7.pngwing.com/pngs/509/503/png-transparent-coffee-cup-plastic-mug-milliliter-us-legal-cup-mug-household-bathroom-lid.png" alt="" class="product-img">
+                    <span class="product-name">Plastic Mug</span>
+                    <span class="product-price">₹129.99</span>
+                    <a href="#" class="button-light">View <i class="bx bx-right-arrow-alt button-icon"></i></a>
+                    <a href="#" class="button-light" style="margin-top: 10px;">Add to Cart <i class="bx bx-cart button-icon"></i></a>
+                </article>
+
+                <article class="product">
+                    <img src="https://edu.casio.com/content/casio/locales/intl/en/brands/edu/calculators/scientific/_jcr_content/root/responsivegrid/container_copy/container_copy_copy__1319256016/container_1745404489/container/container_copy_copy/container_copy/container_copy/image.casiocoreimg.png/1741703367988/main.png" alt="" class="product-img">
+                    <span class="product-name">Scientific Calculator</span>
+                    <span class="product-price">₹129.99</span>
+                    <a href="#" class="button-light">View <i class="bx bx-right-arrow-alt button-icon"></i></a>
+                    <a href="#" class="button-light" style="margin-top: 10px;">Add to Cart <i class="bx bx-cart button-icon"></i></a>
+                </article>
+
+                <article class="product">
+                    <img src="https://png.pngtree.com/png-clipart/20250107/original/pngtree-colorful-study-notebooks-with-realistic-textures-png-image_20114823.png" alt="" class="product-img">
+                    <span class="product-name">Statinory</span>
+                    <span class="product-price">₹129.99</span>
+                    <a href="#" class="button-light">View <i class="bx bx-right-arrow-alt button-icon"></i></a>
+                    <a href="#" class="button-light" style="margin-top: 10px;">Add to Cart <i class="bx bx-cart button-icon"></i></a>
+                </article>
+            </div> -->
+            <div class="Products-container bd-grid" id="productList"></div>
+        </section>
+        <footer class="footer section">
+            <div class="footer-container bd-grid">
+                <div class="footer-box">
+                    <h3 class="footer-title">DayKart</h3>
+                    <p class="footer-description">New Collection of Hostel needs 2025</p>
+                </div>
+
+                <div class="footer-box">
+                    <h3 class="footer-title">EXPLORE</h3>
+                    <ul>
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#featured" class="footer-link">Featured</a></li>
+                        <li><a href="#fancy" class="footer-link">Fancy</a></li>
+                        <li><a href="#new" class="footer-link">New</a></li>
+                        <li><a href="#products" class="footer-link">Products</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-box">
+                    <h3 class="footer-title">SUPPORT</h3>
+                    <ul>
+                        <li><a href="#home" class="footer-link">Product Help</a></li>
+                        <li><a href="#featured" class="footer-link">Customer Care</a></li>
+                        <li><a href="/policies/privacy.html" class="footer-link" target="_blank">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-box">
+                    <a href="#" class="footer-social"><i class="bx bxl-facebook"></i></a>
+                    <a href="#" class="footer-social"><i class="bx bxl-instagram"></i></a>
+                    <a href="#" class="footer-social"><i class="bx bxl-whatsapp"></i></a>
+                    <a href="#" class="footer-social"><i class="bx bxl-google"></i></a>
+                </div>
+            </div>
+
+            <p class="footer-copy">&#169; 2025 <a href="https://codepen.io/leonam-silva-de-souza" target="_blank">DayKart</a>. All rights reserved</p>
+        </footer>
+        <script src="pro.js" type="module"></script>
+        <script src="home.js"></script>
+        <script type="module">
+ async function updateCartBadge() {
+  try {
+    const cartRef = collection(db, `users/${userId}/cart`);
+    const cartSnapshot = await getDocs(cartRef);
+
+    let totalQty = 0;
+    cartSnapshot.forEach(doc => {
+      const item = doc.data();
+      totalQty += item.qty;
+    });
+
+    const cartCountEl = document.getElementById("cart-count");
+    if (cartCountEl) {
+      cartCountEl.textContent = totalQty;
+    }
+
+  } catch (err) {
+    console.error("Error updating cart badge:", err);
+  }
+}
+
+  updateCartBadge();
+</script>
+</body>
+</html>
