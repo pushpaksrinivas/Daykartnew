@@ -128,7 +128,7 @@ async function saveOrderToFirebase(uid, txnId = "") {
 
   if (isMobileDevice()) {
     const amount = total + 100; // Or finalTotal if already computed
-    const upiLink = `upi://pay?pa=9652377187-2@ybl&pn=DayKart&am=${amount}&cu=INR`; // 🛠️ Replace with real info
+    const upiLink = `upi://pay?pa=9652377187-2@ybl&pn=DayKart&am=100&cu=INR`; // 🛠️ Replace with real info
 
     alert("You will be redirected to UPI payment. Please return and enter your transaction ID.");
     window.open(upiLink, "_blank"); // Open UPI link in new tab (or same tab if preferred)
