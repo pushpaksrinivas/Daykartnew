@@ -5,15 +5,14 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-aut
 
 // Firebase config with environment variables
 export const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
-};
+    apiKey: "AIzaSyDsP80XFSykRlteD8LTQaw76TD8AJItMFw",
+    authDomain: "daykart-77771.firebaseapp.com",
+    projectId: "daykart-77771",
+    storageBucket: "daykart-77771.firebasestorage.app",
+    messagingSenderId: "533666061468",
+    appId: "1:533666061468:web:f56261c5f1cbcc0d776159",
+    measurementId: "G-EDMNTSSJGY"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
