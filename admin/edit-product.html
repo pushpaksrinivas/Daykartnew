@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Product</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      background-color: #007BFF;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .back-link a {
+      color: #007BFF;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Edit Product</h2>
+    <form id="edit-product-form">
+      <label for="title">Title</label>
+      <input type="text" id="title" required />
+
+      <label for="category">Category</label>
+      <input type="text" id="category" required />
+
+      <label for="mrp">MRP</label>
+      <input type="number" id="mrp" required />
+
+      <label for="offerPrice">Offer Price</label>
+      <input type="number" id="offerPrice" required />
+
+      <label for="quantity">Quantity</label>
+      <input type="number" id="quantity" required />
+
+      <button type="submit">Update Product</button>
+    </form>
+
+    <div class="back-link">
+      <a href="admin-products.html">&larr; Back to Product List</a>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+    import { getFirestore, doc, getDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+    import { firebaseConfig } from './firebase-config.js';
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const form = document.getElementById('edit-product-form');
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    if (!productId) {
+      alert('No product ID found in URL.');
+      window.location.href = 'admin-products.html';
+    }
+
+    const titleInput = document.getElementById('title');
+    const categoryInput = document.getElementById('category');
+    const mrpInput = document.getElementById('mrp');
+    const offerPriceInput = document.getElementById('offerPrice');
+    const quantityInput = document.getElementById('quantity');
+
+    async function loadProduct() {
+      const productRef = doc(db, 'products', productId);
+      const productSnap = await getDoc(productRef);
+
+      if (productSnap.exists()) {
+        const data = productSnap.data();
+        titleInput.value = data.title;
+        categoryInput.value = data.category;
+        mrpInput.value = data.mrp;
+        offerPriceInput.value = data.offerPrice;
+        quantityInput.value = data.quantity;
+      } else {
+        alert('Product not found!');
+        window.location.href = 'admin-products.html';
+      }
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const updatedProduct = {
+        title: titleInput.value,
+        category: categoryInput.value,
+        mrp: parseFloat(mrpInput.value),
+        offerPrice: parseFloat(offerPriceInput.value),
+        quantity: parseInt(quantityInput.value)
+      };
+
+      await updateDoc(doc(db, 'products', productId), updatedProduct);
+      alert('Product updated successfully!');
+      window.location.href = 'index.html';
+    });
+
+    loadProduct();
+  </script>
+</body>
+</html>
